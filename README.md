@@ -3,7 +3,7 @@ An attempt at fixing vehicle disappearing on newer version of artifacts (in some
 You might get some errors on the server where it tries to access an invalid value; can't solve that problem cba
 
 1. Open '\es_extended\server\main.lua' and add this at the bottom
-`
+```
 ESX.RegisterServerCallback('sandy:vehiclepersistent', function(source, cb, model, coords, heading)
 	local timeout = 60
 	local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, true)
@@ -20,9 +20,9 @@ ESX.RegisterServerCallback('sandy:vehiclepersistent', function(source, cb, model
 	end
 	cb(netId)
 end)
-`
+```
 2. Open '\es_extended\client\client.lua' and edit your 'ESX.Game.SpawnVehicle' function to look like this
-`
+```
 ESX.Game.SpawnVehicle = function(modelName, coords, heading, cb)
 	local model = (type(modelName) == 'number' and modelName or GetHashKey(modelName))
 
@@ -62,4 +62,4 @@ ESX.Game.SpawnVehicle = function(modelName, coords, heading, cb)
 		end, model, coords, heading)
 	end)
 end
-`
+```
